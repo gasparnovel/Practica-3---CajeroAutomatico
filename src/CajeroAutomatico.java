@@ -1,19 +1,20 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class CajeroAutomatico {
 
     private int idUltCaj = 0;
     private int idCaj;
     private int[][] billetes;
-    private ArrayList<Object> listaTarjeta;
+    public List<Object> listaTarjeta;
 
     public void CajeroAutomatico() {
         this.setIdCaj(idUltCaj++);
-        listaTarjeta = new ArrayList<Object>();
+        listaTarjeta = new ArrayList<>();
     }
 
-    public Object getListaTarjeta() {
-        return this.listaTarjeta;
+    public List<Object> getListaTarjeta() {
+        return listaTarjeta;
     }
 
     public void setBilletes(int[][] carga_billetes) {
@@ -40,8 +41,8 @@ public class CajeroAutomatico {
         return this.billetes;
     }
 
-    public void setListaTarjeta(ArrayList<Object> listaTarjeta) {
-        this.listaTarjeta = listaTarjeta;
+    public void setTarjeta(List<Object> tarjeta) {
+        this.listaTarjeta = tarjeta;
     }
     
 }
