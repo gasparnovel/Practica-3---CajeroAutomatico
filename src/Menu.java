@@ -1,7 +1,10 @@
+import java.io.*;
+import java.util.*;
 
 class Menu{
 
     public static void main(String[] args) {
+
         int[][] carga_billetes = {{500, 1}, {200, 3}, {100, 0}, {50, 0},
         {20, 0}, {10, 18}, {5, 25}};
 
