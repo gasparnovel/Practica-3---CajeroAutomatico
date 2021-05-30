@@ -1,12 +1,12 @@
 package src.main;
 
-public class Tarjeta {
+public class Tarjeta implements InterTarjeta {
     
     //atributos
     private String NIF;
     private int PIN;
     private String nombre;
-    private String apellido;
+    protected String apellido;
     private boolean estado;
 
     //constructor 
@@ -63,11 +63,12 @@ public class Tarjeta {
         this.estado = estado;
     }
     
-    //metodo toString pero renombrado en mostrarTarjeta
+    @Override
+    //metodo toString pero renombrado en mostrarTarjeta y sobreescrito con override
     public void mostrarTarjeta() {
         System.out.println(
-        "Nombre: " + getNombre() + "\n" +
-        "Apellido: " + getApellido() + "\n" +
-        "NIF: " + getNIF());
+        "Nombre: " + this.nombre + "\n" +
+        "Apellido: " + this.apellido + "\n" +
+        "NIF: " + this.NIF);
     }
 }

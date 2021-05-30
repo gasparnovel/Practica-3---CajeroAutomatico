@@ -33,12 +33,10 @@ public class TarjetaCredito extends Tarjeta{ // extiene de tarjeta
     //metodo toString pero renombrado en mostrarTarjeta, y un overrde porque como extiende de Tarjeta es necesario para modificar el metodo
     @Override
     public void mostrarTarjeta() {
+        super.mostrarTarjeta();
         System.out.println(
-        "Nombre: " + getNombre() + "\n" +
-        "Apellido: " + getApellido() + "\n" +
-        "NIF: " + getNIF()+ "\n" + 
         "Tarjeta de credito: " + "\n" +
-        "Saldo: " + getSaldoDiponible() + "\n" + 
-        "Crédito: " + getCreditoDisponible());
+        "Saldo: " + this.saldoDiponible + "\n" + 
+        "Crédito: " + this.creditoDisponible);
     }
 }

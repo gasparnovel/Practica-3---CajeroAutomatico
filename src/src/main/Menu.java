@@ -8,6 +8,7 @@ public class Menu {
 
     // atributos static porque lo utilizaremos en diversos metodos
     public static TarjetaDebito mitarj1; 
+    public static CajeroAutomatico micajero; 
     public static TarjetaCredito mitarj2; 
     public static int[][] carga_billetes;
 
@@ -41,7 +42,7 @@ public class Menu {
 
                 // creamos dos objetos 
                 mitarj2 = new TarjetaCredito("87654321b", 2222, "Javi", "Javi", 1000, 5000);
-                mitarj1 = new TarjetaDebito("12345678a", 1111, "Fran", "Fran", 20000);
+                mitarj1 = new TarjetaDebito("1", 1111, "Fran", "Fran", 20000);
 
                 // agregamos los objetos anteriores al objeto micajero
                 micajero.getListaTarjeta().add(mitarj2);
@@ -89,7 +90,6 @@ public class Menu {
     public static void mostrarCajero() {
         // contador que se actualizara durante el for para cada fila de la lista
         int cont = 0;
-
         for (int i = 0; i < carga_billetes.length; i++) {
             System.out.print(carga_billetes[cont][1] + " billetes de " + carga_billetes[cont][0] + " €" + "\n");
             cont++;
@@ -111,55 +111,95 @@ public class Menu {
 
             // bucle if-else
             if (nif.equals(mitarj1.getNIF()) && pin == mitarj1.getPIN()
-                    || nif.equals(mitarj2.getNIF()) && pin == mitarj2.getPIN()) { // si el nif es igual al nif de una tarjeta y el pin igual permitira retirar dinero
+                    || nif.equals(mitarj2.getNIF()) && pin == mitarj2.getPIN()) { // si el nif es igual al nif de una
 
                 Scanner sc4 = new Scanner(System.in);
 
                 System.out.println("¿que cantidad deseas sacar?");
                 int dinero = sc4.nextInt();
-
+                
                 // contadores
-                int ContadorQ = 0;
-                int ContadorD = 0;
-                int ContadorDiez = 0;
-                int ContadorCinco = 0;
+                int cont = 0;
+                int cont2 = 0;
+                int saldo = 0;
+                int contadorQuin  = 0;
+                int contadorDos = 0;
+                int contadorCien = 0;
+                int contadorCinq = 0;
+                int contadorVein  = 0;
+                int contadorDiez  = 0;
+                int contadorCinco  = 0;
 
-                //bucle while
+                for (int i = 0; i < carga_billetes.length; i++) {
+                    int multiplicacion = carga_billetes[cont2][1] * carga_billetes[cont2][0];
+                    saldo += multiplicacion;
+                    cont2++;
+                }
+
+                // bucle while
                 while (dinero > 0) {
-                    if (dinero > 1405) {
-                        System.err.println("Has sacado más cantidad de la que dispone el cajero, intentalo de nuevo.");
-                        break;
+                    if (dinero > saldo) {
+                        System.err.println("No hay saldo suficiente en el cajero automatico, intentalo de nuevo.");
+                        menu();
                     }
-
-                    if (ContadorQ < 1 && dinero >= 500) {
+                    if (contadorQuin < carga_billetes[0][1] && dinero >= 500) {
                         dinero -= 500;
                         carga_billetes[0][1]--;
-                        ContadorQ++;
+                        contadorQuin++;
                     }
-                    if (ContadorD < 3 && dinero >= 200) {
+                    if (contadorDos < carga_billetes[1][1] && dinero >= 200) {
                         dinero -= 200;
                         carga_billetes[1][1]--;
-                        ContadorD++;
-                    } else if (ContadorDiez < 18 && dinero >= 10) {
+                        contadorDos++;
+                    }
+                    if (contadorCien < carga_billetes[2][1] && dinero >= 200) {
+                        dinero -= 100;
+                        carga_billetes[2][1]--;
+                        contadorCien++;
+                    }
+                    if (contadorCinq < carga_billetes[3][1] && dinero >= 200) {
+                        dinero -= 50;
+                        carga_billetes[3][1]--;
+                        contadorCinq++;
+                    }
+                    if (contadorVein < carga_billetes[4][1] && dinero >= 200) {
+                        dinero -= 20;
+                        carga_billetes[4][1]--;
+                        contadorVein++;
+                    } else if (contadorDiez < carga_billetes[5][1] && dinero >= 10) {
                         dinero -= 10;
                         carga_billetes[5][1]--;
-                        ContadorDiez++;
-                    } else if (ContadorCinco < 25 && dinero >= 5) {
+                        contadorDiez++;
+                    } else if (contadorCinco < carga_billetes[6][1] && dinero >= 5) {
                         dinero -= 5;
                         carga_billetes[6][1]--;
-                        ContadorCinco++;
+                        contadorCinco++;
                     }
                 }
 
                 // se imprimiran las siguientes sentencias
                 System.out.println("Desglose de la cantidad satisfecha:");
-                System.out.println(ContadorQ + " billetes de 500 €");
-                System.out.println(ContadorD + " billetes de 200 €");
-                System.out.println("0 billetes de 100 €");
-                System.out.println("0 billetes de 50 €");
-                System.out.println("0 billetes de 20 €");
-                System.out.println(ContadorDiez + " billetes de 10 €");
-                System.out.println(ContadorCinco + " billetes de 5 €");
+                System.out.println(contadorQuin + " billetes de 500 €");
+                System.out.println(contadorDos + " billetes de 200 €");
+                System.out.println(contadorCien + " billetes de 100 €");
+                System.out.println(contadorCinq + " billetes de 50 €");
+                System.out.println(contadorVein + " billetes de 20 €");
+                System.out.println(contadorDiez + " billetes de 10 €");
+                System.out.println(contadorCinco + " billetes de 5 €");
+
+                int cont3 = 0;
+                int dineroRestante= 0;
+
+                for (int i = 0; i < carga_billetes.length; i++) {
+                    int multiplicacion2 = carga_billetes[cont3][1] * carga_billetes[cont3][0];
+                    dineroRestante += multiplicacion2;
+                    cont3++;
+                }
+
+                System.out.println(dineroRestante);
+
+                micajero.setBilletes(carga_billetes);
+
             } else {
                 if (nif.equals(mitarj1.getNIF()) || nif.equals(mitarj2.getNIF())) { 
                 } else { // si el nif no es igual al nif de una tarjeta mostrara la senencia

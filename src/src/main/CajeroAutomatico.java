@@ -12,7 +12,7 @@ public class  CajeroAutomatico{
 
     //constructor   
     public CajeroAutomatico() {
-        this.setIdCaj(++idUltCaj); // cuando empieza la aplicacion se le suma en +1 a la variable idCaj
+        this.setIdCaj(idUltCaj + 1); // cuando empieza la aplicacion se le suma en +1 a la variable idCaj
         listaTarjeta = new ArrayList<>(); // inicializacion de la arrayList
     }
 
