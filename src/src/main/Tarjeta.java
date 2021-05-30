@@ -1,3 +1,5 @@
+package src.main;
+
 public abstract class Tarjeta {
     
     private String NIF= "gaspar";
@@ -57,7 +59,7 @@ public abstract class Tarjeta {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
+    
     public String mostrarTarjeta() {
         return 
             "Nombre: " + getNombre()+

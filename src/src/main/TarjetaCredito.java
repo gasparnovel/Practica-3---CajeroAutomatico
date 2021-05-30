@@ -1,4 +1,4 @@
-
+package src.main;
 
 public class TarjetaCredito extends Tarjeta{
 
@@ -25,6 +25,16 @@ public class TarjetaCredito extends Tarjeta{
 
     public void setCreditoDisponible(double creditoDisponible) {
         this.creditoDisponible = creditoDisponible;
+    }
+    @Override
+    public String mostrarTarjeta() {
+        return 
+            "Nombre: " + getNombre()+
+            "Apellido: " + getApellido()+
+            "NIF: " + getNIF()+
+            "Tarjeta de credito: "+ 
+            "Saldo: " + getSaldoDiponible()+
+            "Credito: " + getCreditoDisponible();
     }
 
 }
