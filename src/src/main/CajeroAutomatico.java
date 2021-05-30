@@ -1,20 +1,22 @@
 package src.main;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CajeroAutomatico {
+public class  CajeroAutomatico{
 
+    // atributos 
     private int idUltCaj = 0;
     private int idCaj;
-    private int[][] billetes;
-    public List<Object> listaTarjeta;
+    public int[][] billetes; // lista bidimensional billetes
+    public List<Object> listaTarjeta; //array
 
-    public void CajeroAutomatico() {
-        this.setIdCaj(idUltCaj++);
-        listaTarjeta = new ArrayList<>();
+    //constructor   
+    public CajeroAutomatico() {
+        this.setIdCaj(++idUltCaj); // cuando empieza la aplicacion se le suma en +1 a la variable idCaj
+        listaTarjeta = new ArrayList<>(); // inicializacion de la arrayList
     }
 
+    // getter/setter
     public List<Object> getListaTarjeta() {
         return listaTarjeta;
     }
@@ -46,10 +48,5 @@ public class CajeroAutomatico {
     public void setTarjeta(List<Object> tarjeta) {
         this.listaTarjeta = tarjeta;
     }
-    
 }
-
-
-
-
 

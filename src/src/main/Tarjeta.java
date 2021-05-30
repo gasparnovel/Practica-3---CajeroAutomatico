@@ -1,13 +1,15 @@
 package src.main;
 
-public abstract class Tarjeta {
+public class Tarjeta {
     
-    private String NIF= "gaspar";
-    private int PIN = 1234;
+    //atributos
+    private String NIF;
+    private int PIN;
     private String nombre;
     private String apellido;
     private boolean estado;
 
+    //constructor 
     public Tarjeta(String NIF, int PIN, String nombre, String apellido) {
         this.NIF = NIF;
         this.PIN = PIN;
@@ -16,6 +18,7 @@ public abstract class Tarjeta {
         this.estado = estado;
     }
 
+    // getter/setter
     public String getNIF() {
         return this.NIF;
     }
@@ -60,11 +63,11 @@ public abstract class Tarjeta {
         this.estado = estado;
     }
     
-    public String mostrarTarjeta() {
-        return 
-            "Nombre: " + getNombre()+
-            "Apellido: " + getApellido()+
-            "NIF: " + getNIF();
+    //metodo toString pero renombrado en mostrarTarjeta
+    public void mostrarTarjeta() {
+        System.out.println(
+        "Nombre: " + getNombre() + "\n" +
+        "Apellido: " + getApellido() + "\n" +
+        "NIF: " + getNIF());
     }
-
 }

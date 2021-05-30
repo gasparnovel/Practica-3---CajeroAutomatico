@@ -1,16 +1,19 @@
 package src.main;
 
-public class TarjetaCredito extends Tarjeta{
+public class TarjetaCredito extends Tarjeta{ // extiene de tarjeta
 
+    // atributos 
     private double saldoDiponible;
     private double creditoDisponible;
 
+    //constructor   
     public TarjetaCredito(String NIF, int PIN, String nombre, String apellido,  double saldoDiponible, double creditoDisponible) {
         super(NIF, PIN, nombre, apellido);
         this.saldoDiponible = saldoDiponible;
         this.creditoDisponible = creditoDisponible;
     }
 
+    // getter/setter
     public double getSaldoDiponible() {
         return this.saldoDiponible;
     }
@@ -26,15 +29,16 @@ public class TarjetaCredito extends Tarjeta{
     public void setCreditoDisponible(double creditoDisponible) {
         this.creditoDisponible = creditoDisponible;
     }
-    @Override
-    public String mostrarTarjeta() {
-        return 
-            "Nombre: " + getNombre()+
-            "Apellido: " + getApellido()+
-            "NIF: " + getNIF()+
-            "Tarjeta de credito: "+ 
-            "Saldo: " + getSaldoDiponible()+
-            "Credito: " + getCreditoDisponible();
-    }
 
+    //metodo toString pero renombrado en mostrarTarjeta, y un overrde porque como extiende de Tarjeta es necesario para modificar el metodo
+    @Override
+    public void mostrarTarjeta() {
+        System.out.println(
+        "Nombre: " + getNombre() + "\n" +
+        "Apellido: " + getApellido() + "\n" +
+        "NIF: " + getNIF()+ "\n" + 
+        "Tarjeta de credito: " + "\n" +
+        "Saldo: " + getSaldoDiponible() + "\n" + 
+        "Crédito: " + getCreditoDisponible());
+    }
 }
